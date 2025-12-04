@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Clicker Pro - Free Online Idle Clicker Game</title>
+    <meta name="description" content="Play Cookie Clicker Pro online for free! Click cookies, buy upgrades, unlock achievements and build your cookie empire in this addictive idle clicker game.">
+    <meta name="keywords" content="cookie clicker pro, idle game, clicker game, free online game, cookie game">
+    <link rel="canonical" href="https://cookieclickerpro.xyz/">
+    <meta property="og:title" content="Cookie Clicker Pro - Free Idle Clicker Game">
+    <meta property="og:description" content="Click cookies, buy upgrades, and build your cookie empire!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cookieclickerpro.xyz/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 50%, #F4A460 100%);
+            min-height: 100vh;
+            color: #3d2914;
+        }
+
+        header {
+            background: linear-gradient(180deg, #5D3A1A 0%, #8B4513 100%);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border-bottom: 4px solid #FFD700;
+        }
+
+        h1 {
+            color: #FFD700;
+            font-size: 2.8em;
+            font-weight: 700;
+            text-shadow: 3px 3px 0 #3d2914, -1px -1px 0 #3d2914;
+            letter-spacing: 2px;
+        }
+
+        h1::before, h1::after {
+            content: "🍪";
+            margin: 0 15px;
+        }
+
+        .game-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .game-container {
+            background: #FFF8DC;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3), inset 0 2px 0 rgba(255,255,255,0.5);
+            border: 4px solid #DEB887;
+        }
+
+        .game-frame {
+            width: 100%;
+            height: 650px;
+            border: none;
+            border-radius: 12px;
+            display: block;
+            background: #000;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: linear-gradient(180deg, #FFD700 0%, #FFA500 100%);
+            color: #5D3A1A;
+            border: 3px solid #DAA520;
+            padding: 12px 30px;
+            font-size: 1.1em;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 600;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 0 #B8860B;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #B8860B;
+        }
+
+        .btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #B8860B;
+        }
+
+        .info-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .info-card {
+            background: #FFF8DC;
+            border-radius: 16px;
+            padding: 25px;
+            border: 3px solid #DEB887;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .info-card h2 {
+            color: #8B4513;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px dashed #DEB887;
+        }
+
+        .info-card p, .info-card li {
+            color: #5D3A1A;
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-card li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .info-card li::before {
+            content: "🍪";
+            position: absolute;
+            left: 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .stat-item {
+            background: linear-gradient(135deg, #FFE4B5 0%, #FFDAB9 100%);
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #DEB887;
+        }
+
+        .stat-value {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #8B4513;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: #A0522D;
+            margin-top: 5px;
+        }
+
+        .tips-box {
+            background: linear-gradient(135deg, #FFF8DC 0%, #FAEBD7 100%);
+            border-left: 5px solid #FFD700;
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin-top: 20px;
+        }
+
+        .tips-box h3 {
+            color: #DAA520;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        footer {
+            background: #5D3A1A;
+            color: #DEB887;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h1::before, h1::after {
+                display: none;
+            }
+
+            .game-frame {
+                height: 450px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>COOKIE CLICKER PRO</h1>
+    </header>
+
+    <main class="game-wrapper">
+        <div class="game-container">
+            <iframe
+                id="gameFrame"
+                class="game-frame"
+                src="https://cloud.onlinegames.io/games/2025/unity/cookie-clicker-pro/index-og.html"
+                allowfullscreen
+                scrolling="no">
+            </iframe>
+            <div class="controls">
+                <button class="btn" onclick="toggleFullscreen()">🖥️ Fullscreen</button>
+                <button class="btn" onclick="restartGame()">🔄 Restart</button>
+            </div>
+        </div>
+
+        <section class="info-section">
+            <div class="info-card">
+                <h2>🍪 About Cookie Clicker Pro</h2>
+                <p>Cookie Clicker Pro is the ultimate idle clicker game where your goal is simple: bake as many cookies as possible! Start by clicking the giant cookie, then invest your cookies in upgrades and buildings that produce cookies automatically.</p>
+                <div class="tips-box">
+                    <h3>💡 Pro Tip</h3>
+                    <p>Focus on buying cursors and grandmas early, then save up for the more expensive buildings. The golden cookies give huge bonuses!</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h2>🎮 Game Features</h2>
+                <ul>
+                    <li>Click to earn cookies</li>
+                    <li>Buy upgrades for more cookies per click</li>
+                    <li>Unlock automatic cookie generators</li>
+                    <li>Collect achievements</li>
+                    <li>Prestige system for endless replayability</li>
+                    <li>Special golden cookie events</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h2>📊 Game Stats</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value">∞</div>
+                        <div class="stat-label">Cookies to Bake</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">15+</div>
+                        <div class="stat-label">Building Types</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">100+</div>
+                        <div class="stat-label">Achievements</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">FREE</div>
+                        <div class="stat-label">To Play</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h2>❓ How to Play</h2>
+                <ul>
+                    <li><strong>Click the cookie</strong> - Each click earns cookies</li>
+                    <li><strong>Buy buildings</strong> - Generate cookies automatically</li>
+                    <li><strong>Purchase upgrades</strong> - Multiply your production</li>
+                    <li><strong>Watch for golden cookies</strong> - Click them for bonuses</li>
+                    <li><strong>Prestige</strong> - Reset for permanent multipliers</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Cookie Clicker Pro | Play free online games</p>
+        <p style="margin-top: 10px; font-size: 0.9em;">
+            <a href="/sitemap.xml">Sitemap</a>
+        </p>
+    </footer>
+
+    <script>
+        function toggleFullscreen() {
+            const iframe = document.getElementById('gameFrame');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.webkitRequestFullscreen) {
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) {
+                iframe.msRequestFullscreen();
+            }
+        }
+
+        function restartGame() {
+            const iframe = document.getElementById('gameFrame');
+            iframe.src = iframe.src;
+        }
+    </script>
+</body>
+</html>
